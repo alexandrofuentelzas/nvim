@@ -14,3 +14,5 @@ end
 map({ "n", "v" }, "j", "h", { silent = true })
 map({ "n", "v" }, "k", "k", { silent = true })
 map({ "n", "v" }, ";", "j", { silent = true })
+
+map({"n"},"<C-b>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
