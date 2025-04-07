@@ -20,3 +20,19 @@ map({"n"},"<C-b>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 map({"n"}, "n", "nzzzv", { silent = true} )
 map({"n"}, "N", "Nzzzv", { silent = true} )
+
+map({"n"}, "<leader>rw", function()
+ vim.ui.input({ prompt = "Word to replace: " }, function(find)
+    if find then
+      vim.ui.input({ prompt = "Replace with: " }, function(replace)
+        if replace then
+          -- Escape forward slashes to prevent errors
+          find = find:gsub("/", "\\/")
+          replace = replace:gsub("/", "\\/")
+          vim.cmd(":%s/" .. find .. "/" .. replace .. "/c")
+        end
+      end)
+    end
+  end)
+end, { desc = "Find and replace with confirmation", noremap = true, silent = true })
+
