@@ -36,3 +36,6 @@ cmp.setup({
 -- Set up lspconfig with nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Use this updated capabilities when setting up your LSP servers
+
+-- Make cmp popup background a little gray
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "#2e2e2e" })
