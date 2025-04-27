@@ -29,10 +29,14 @@ map({"n"}, "<leader>rw", function()
           -- Escape forward slashes to prevent errors
           find = find:gsub("/", "\\/")
           replace = replace:gsub("/", "\\/")
-          vim.cmd(":%s/" .. find .. "/" .. replace .. "/c")
+          vim.cmd(":%s/" .. find .. "/" .. replace .. "/gc")
         end
       end)
     end
   end)
 end, { desc = "Find and replace with confirmation", noremap = true, silent = true })
+
+map({"n"}, "<leader>jq", function()
+    vim.cmd("%!jq '.'")
+end, {silent = true, desc = "Basic JSON Formatting"})
 
