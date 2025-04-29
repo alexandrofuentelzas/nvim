@@ -12,8 +12,11 @@ end
 
 -- Remap hjkl to jkl; for normal and visual modes
 map({ "n", "v" }, "j", "h", { silent = true })
-map({ "n", "v" }, "k", "k", { silent = true })
 map({ "n", "v" }, ";", "j", { silent = true })
+
+-- Remap Ctrl-hjkl to Ctrl-jkl; for normal and visual modes
+map({ "n", "v" }, "<C-w>j", "<C-w>h", { silent = true })
+map({ "n", "v" }, "<C-w>;", "<C-w>j", { silent = true })
 
 -- Toggle NvimTree
 map({"n"},"<C-b>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
