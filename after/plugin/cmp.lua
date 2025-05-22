@@ -2,9 +2,6 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 
 cmp.setup({
-  completion = {
-      autocomplete = false,
-  },
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -12,7 +9,6 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -27,6 +23,10 @@ cmp.setup({
         fallback()
       end
     end, { 'i', 's' }),
+    ['<C-y>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>'] = function(fallback)
+        fallback()
+    end,
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -42,4 +42,3 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Make cmp popup background a little gray
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "#2e2e2e" })
-
