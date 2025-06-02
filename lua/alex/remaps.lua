@@ -43,3 +43,6 @@ map({"n"}, "<leader>jq", function()
     vim.cmd("%!jq '.'")
 end, {silent = true, desc = "Basic JSON Formatting"})
 
+-- Modifying p command to dump highlighed text to be replaced in the black hole register 
+map('x', 'p', '"_dP', { noremap = true, silent = true })
+
